@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: pupitre
+---
+testFramework: junit
+sourceLanguage: java

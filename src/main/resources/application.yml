@@ -1,0 +1,27 @@
+micronaut:
+  application:
+    name: ui
+---
+micronaut:
+  router:
+    static:
+      resources:
+        enabled: true
+micronaut.router.static-resources:
+  webjars:
+    paths: classpath:META-INF/resources/webjars
+    mapping: /webjars/**
+  css:
+    paths: classpath:/css
+    mapping: /css/**
+  js:
+    paths: classpath:/js
+    mapping: /js/**
+  images:
+    paths: classpath:/images
+    mapping: /images/**
+  fonts:
+    paths: classpath:/fonts
+    mapping: /fonts/**
+---
+micronaut.views.thymeleaf.enabled: true
