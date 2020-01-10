@@ -25,3 +25,9 @@ micronaut.router.static-resources:
     mapping: /fonts/**
 ---
 micronaut.views.thymeleaf.enabled: true
+---
+micronaut:
+  io:
+    watch:
+      paths: src/main
+      restart: true

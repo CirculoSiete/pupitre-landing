@@ -40,6 +40,10 @@ dependencies {
   testImplementation "io.micronaut.test:micronaut-test-junit5"
   testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
 
+  developmentOnly "io.micronaut:micronaut-runtime-osx:$micronautVersion"
+  developmentOnly "net.java.dev.jna:jna"
+  developmentOnly "io.methvin:directory-watcher"
+
 
   runtimeOnly 'org.webjars:bootstrap:4.1.3'
   runtimeOnly 'org.webjars:font-awesome:5.0.13'
