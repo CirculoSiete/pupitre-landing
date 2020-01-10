@@ -79,6 +79,15 @@ public class IndexController {
         "En línea-OnDemand",
         "#",
         "#"
+      ),
+      popularCourse(
+        "/images/courses/courses1-3.jpg",
+        "Jenkins efectivo",
+        "Aprende a usar Jenkins en una forma efectiva, para implementar Integración Continua con valor.",
+        "$ 11,000 + IVA",
+        "Presencial",
+        "#",
+        "#"
       )
     );
   }
