@@ -1,10 +1,10 @@
 $(document).ready(function () {
     "use strict";
 
-	// Peloader
+	// Preloader
 	setTimeout(function(){
 		$('body').addClass('loaded');
-	}, 1000);
+	}, 500);
 	
     // ************Mean Menu
     jQuery('header .main-menu').meanmenu({
