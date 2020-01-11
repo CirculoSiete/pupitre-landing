@@ -42,6 +42,14 @@ public class IndexController {
         venue,
         "/images/event/event-1.jpg",
         "#"
+      ),
+      event(
+        "31 <span>Mar</span>",
+        "Some event",
+        "Martes, 7pm a 10pm<br>Centraal",
+        "Centraal",
+        "/images/event/event-3.jpg",
+        "#"
       )
     );
   }
