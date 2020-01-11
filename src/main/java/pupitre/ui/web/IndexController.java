@@ -32,48 +32,6 @@ public class IndexController {
         "#",
         "Domingo Suárez",
         "Instructor"
-      ),
-      instructor(
-        "/images/team/team-01.jpg",
-        "#",
-        "Domingo Suárez",
-        "Instructor"
-      ),
-      instructor(
-        "/images/team/team-01.jpg",
-        "#",
-        "Domingo Suárez",
-        "Instructor"
-      ),
-      instructor(
-        "/images/team/team-01.jpg",
-        "#",
-        "Domingo Suárez",
-        "Instructor"
-      ),
-      instructor(
-        "/images/team/team-01.jpg",
-        "#",
-        "Domingo Suárez",
-        "Instructor"
-      ),
-      instructor(
-        "/images/team/team-01.jpg",
-        "#",
-        "Domingo Suárez",
-        "Instructor"
-      ),
-      instructor(
-        "/images/team/team-01.jpg",
-        "#",
-        "Domingo Suárez",
-        "Instructor"
-      ),
-      instructor(
-        "/images/team/team-01.jpg",
-        "#",
-        "Domingo Suárez",
-        "Instructor"
       )
     );
   }
