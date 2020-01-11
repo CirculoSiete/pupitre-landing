@@ -16,10 +16,17 @@ public class IndexController {
   public ModelAndView index(HttpRequest<?> request) {
     var dataToRender = Map.of(
       "sliderItems", sliderItems(),
-      "courses", popularCourses()
+      "courses", popularCourses(),
+      "featuredCourse", featuredCourse()
     );
 
     return new ModelAndView("index", dataToRender);
+  }
+
+  private Map<String, String> featuredCourse() {
+    return Map.of(
+      "name", "Docker Containers y Orquestación con Kubernetes"
+    );
   }
 
   private List<Map<String, String>> sliderItems() {
