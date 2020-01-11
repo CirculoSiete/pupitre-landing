@@ -1,0 +1,28 @@
+<!--========={ Our Testimonial }========-->
+<section class="testimonial" th:if="${testimonials!=null and !testimonials.empty}">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="title">
+                    <h2>Testimoniales</h2>
+                    <p>Nuestros clientes nos recomiendan.</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div id="testimonial">
+                    <th:block th:each="testimonial : ${testimonials}">
+                        <div class="testimonial_single">
+                            <div class="member-img">
+                                <img th:src="${testimonial.image}" alt="member img" class="img-fluid  wow zoomIn"
+                                     data-wow-duration="2s" data-wow-delay=".2s">
+                            </div>
+                            <h4 class=" wow fadeIn" data-wow-duration="2s" data-wow-delay=".2s" th:text="${testimonial.name}"></h4>
+                            <span class=" wow fadeIn" data-wow-duration="2s" data-wow-delay=".3s" th:text="${testimonial.company}"></span>
+                            <p class=" wow fadeIn" data-wow-duration="2s" data-wow-delay=".4s" th:text="${testimonial.content}"></p>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- ./ End Our Testimonial -->
