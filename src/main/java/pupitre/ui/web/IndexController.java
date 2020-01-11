@@ -18,10 +18,73 @@ public class IndexController {
       "sliderItems", sliderItems(),
       "courses", popularCourses(),
       "featuredCourse", featuredCourse(),
-      "events", events()
+      "events", events(),
+      "instructors", instructors()
     );
 
     return new ModelAndView("index", dataToRender);
+  }
+
+  private List instructors() {
+    return List.of(
+      instructor(
+        "/images/team/team-01.jpg",
+        "#",
+        "Domingo Suárez",
+        "Instructor"
+      ),
+      instructor(
+        "/images/team/team-01.jpg",
+        "#",
+        "Domingo Suárez",
+        "Instructor"
+      ),
+      instructor(
+        "/images/team/team-01.jpg",
+        "#",
+        "Domingo Suárez",
+        "Instructor"
+      ),
+      instructor(
+        "/images/team/team-01.jpg",
+        "#",
+        "Domingo Suárez",
+        "Instructor"
+      ),
+      instructor(
+        "/images/team/team-01.jpg",
+        "#",
+        "Domingo Suárez",
+        "Instructor"
+      ),
+      instructor(
+        "/images/team/team-01.jpg",
+        "#",
+        "Domingo Suárez",
+        "Instructor"
+      ),
+      instructor(
+        "/images/team/team-01.jpg",
+        "#",
+        "Domingo Suárez",
+        "Instructor"
+      ),
+      instructor(
+        "/images/team/team-01.jpg",
+        "#",
+        "Domingo Suárez",
+        "Instructor"
+      )
+    );
+  }
+
+  private Map instructor(String logo, String profileUrl, String name, String title) {
+    return Map.of(
+      "logo", logo,
+      "profileUrl", profileUrl,
+      "name", name,
+      "title", title
+    );
   }
 
   private List<Map<String, String>> events() {

@@ -1,0 +1,47 @@
+<!--========={ Our Instructiors }========-->
+<section class="our_instructors" th:if="${instructors!=null and !instructors.empty}">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="title">
+                    <h2>Nuestro equipo</h2>
+                    <p></p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div id="team_01" class="owlCarousel">
+                    <th:block th:each="instructor : ${instructors}">
+                        <div class="single-wrappe ">
+                            <div class="team-single-item wow fadeIn" data-wow-duration="2s" data-wow-delay=".2s">
+                                <figure>
+                                    <div class="member-img">
+                                        <div class="teachars_pro">
+                                            <img th:src="${instructor.logo}" alt="member img" class="img-fluid">
+                                        </div>
+                                    </div>
+                                    <figcaption>
+                                        <div class="member-name">
+                                            <h4><a th:href="${instructor.profileUrl}" title=""
+                                                   th:text="${instructor.name}"></a></h4>
+                                            <span th:text="${instructor.title}"></span>
+                                        </div>
+                                        <!--
+                                        TODO: profile social media info
+                                        -->
+                                        <!--/*ul class="social-links list-unstyled">
+                                            <li class="nav-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li class="nav-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li class="nav-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li class="nav-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        </ul*/-->
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="/images/shape_1.png" alt="" class="shape_instructor">
+</section><!-- ./ End Our Instructiors -->
