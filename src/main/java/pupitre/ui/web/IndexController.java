@@ -19,10 +19,29 @@ public class IndexController {
       "courses", popularCourses(),
       "featuredCourse", featuredCourse(),
       "events", events(),
-      "instructors", instructors()
+      "instructors", instructors(),
+      "tour", tour()
     );
 
     return new ModelAndView("index", dataToRender);
+  }
+
+  private Map tour() {
+    return tour("/images/video.png",
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis corrupti quos dolores et " +
+        "quas molestias excepturi sint occaecati cupiditate",
+      "non provident, similique sunt in culpa qui officia deserunt mollitia animi fuga.",
+      "https://www.youtube.com/watch?v=VaZ_B4HeewU");
+  }
+
+  private Map tour(String image, String desc1, String desc2, String videoUrl) {
+    return Map.of(
+      "image", image,
+      "desc1", desc1,
+      "desc2", desc2,
+      "videoUrl", videoUrl
+
+    );
   }
 
   private List instructors() {
