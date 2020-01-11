@@ -1,0 +1,77 @@
+<!--========={ Popular Events }========-->
+<section class="popular_event" th:if="${events!=null and !events.empty}">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="title">
+                    <h2>Próximos Eventos</h2>
+                    <!--p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p-->
+                </div>
+            </div>
+            <th:block th:each="event : ${events}">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-0">
+                    <div class="event_single wow fadeIn" data-wow-duration="2s" data-wow-delay=".2s">
+                        <div class="event_img">
+                            <img th:src="${event.image}" alt="" class="img-fluid">
+                            <div class="event_content">
+                                <div class="event_date" th:utext="${event.date}"></div>
+                                <div class="single_event_title">
+                                    <h3><a th:href="${event.url}" title="" th:text="${event.name}"></a></h3>
+                                    <div class="shape"></div>
+                                </div>
+                                <p th:utext="${event.time}"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+
+            <!--div class="col-12 col-sm-12 col-md-6 col-lg-6 p-0">
+                <div class="event_single wow fadeIn" data-wow-duration="2s" data-wow-delay=".3s">
+                    <div class="event_img">
+                        <img src="images/event/event-2.jpg" alt="" class="img-fluid">
+                        <div class="event_content">
+                            <div class="event_date">28 <span>Sep</span></div>
+                            <div class="single_event_title">
+                                <h3><a href="" title="">UI/UX Research</a></h3>
+                                <div class="shape"></div>
+                            </div>
+                            <p>Friday, 3pm to 5pm <br>Venu: Hobert center hall</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-0">
+                <div class="event_single wow fadeIn" data-wow-duration="2s" data-wow-delay=".4s">
+                    <div class="event_img">
+                        <img src="images/event/event-3.jpg" alt="" class="img-fluid">
+                        <div class="event_content">
+                            <div class="event_date">20 <span>Aug</span></div>
+                            <div class="single_event_title">
+                                <h3><a href="" title="">Typography tips</a></h3>
+                                <div class="shape"></div>
+                            </div>
+                            <p>Friday, 3pm to 5pm <br>Venu: Hobert center hall</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-0">
+                <div class="event_single wow fadeIn" data-wow-duration="2s" data-wow-delay=".5s">
+                    <div class="event_img">
+                        <img src="images/event/event-4.jpg" alt="" class="img-fluid">
+                        <div class="event_content">
+                            <div class="event_date">08 <span>Dec</span></div>
+                            <div class="single_event_title">
+                                <h3><a href="" title="">Research of coffee</a></h3>
+                                <div class="shape"></div>
+                            </div>
+                            <p>Friday, 3pm to 5pm <br>Venu: Hobert center hall</p>
+                        </div>
+                    </div>
+                </div>
+            </div-->
+        </div>
+    </div>
+</section><!-- ./ End Popular Events -->

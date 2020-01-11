@@ -17,10 +17,44 @@ public class IndexController {
     var dataToRender = Map.of(
       "sliderItems", sliderItems(),
       "courses", popularCourses(),
-      "featuredCourse", featuredCourse()
+      "featuredCourse", featuredCourse(),
+      "events", events()
     );
 
     return new ModelAndView("index", dataToRender);
+  }
+
+  private List<Map<String, String>> events() {
+    String venue = "iQ4";
+    return List.of(
+      event(
+        "22 <span>Ene</span>",
+        "Cloud Native MX Meetup",
+        "Miercoles, 8pm-9pm",
+        "YouTube",
+        "/images/event/event-2.jpg",
+        "#"
+      ),
+      event(
+        "18 <span>Feb</span>",
+        "Curso Terraform",
+        "Viernes, 3pm a 5pm<br>" + venue,
+        venue,
+        "/images/event/event-1.jpg",
+        "#"
+      )
+    );
+  }
+
+  private Map<String, String> event(String date, String name, String time, String venue, String image, String url) {
+    return Map.of(
+      "date", date,
+      "name", name,
+      "time", time,
+      "venue", venue,
+      "image", image,
+      "url", url
+    );
   }
 
   private Map<String, String> featuredCourse() {
