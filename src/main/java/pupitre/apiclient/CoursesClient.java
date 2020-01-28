@@ -15,4 +15,7 @@ public interface CoursesClient {
 
   @Get("/v1/courses/featured")
   FeaturedCourse featured();
+
+  @Get("/v1/courses/events")
+  List<Event> events();
 }

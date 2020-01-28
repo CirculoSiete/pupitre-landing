@@ -26,7 +26,7 @@ public class IndexController {
       "sliderItems", courseService.awesome(),
       "courses", courseService.popular(),
       "featuredCourse", courseService.featuredCourse(),
-      "events", events(),
+      "events", courseService.events(),
       "instructors", instructors(),
       "tour", tour(),
       "testimonials", testimonials()
@@ -95,47 +95,4 @@ public class IndexController {
       "title", title
     );
   }
-
-  private List<Map<String, String>> events() {
-    String venue = "iQ4";
-    return List.of(
-      event(
-        "22 <span>Ene</span>",
-        "Cloud Native MX Meetup",
-        "Miercoles, 8pm-9pm",
-        "YouTube",
-        "/images/event/event-2.jpg",
-        "#"
-      ),
-      event(
-        "18 <span>Feb</span>",
-        "Curso Terraform",
-        "Viernes, 3pm a 5pm<br>" + venue,
-        venue,
-        "/images/event/event-1.jpg",
-        "#"
-      ),
-      event(
-        "31 <span>Mar</span>",
-        "Some event",
-        "Martes, 7pm a 10pm<br>Centraal",
-        "Centraal",
-        "/images/event/event-3.jpg",
-        "#"
-      )
-    );
-  }
-
-  private Map<String, String> event(String date, String name, String time, String venue, String image, String url) {
-    return Map.of(
-      "date", date,
-      "name", name,
-      "time", time,
-      "venue", venue,
-      "image", image,
-      "url", url
-    );
-  }
-
-
 }

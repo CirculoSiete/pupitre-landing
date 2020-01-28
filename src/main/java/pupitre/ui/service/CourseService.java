@@ -1,9 +1,6 @@
 package pupitre.ui.service;
 
-import pupitre.apiclient.AwesomeCourse;
-import pupitre.apiclient.CoursesClient;
-import pupitre.apiclient.FeaturedCourse;
-import pupitre.apiclient.PopularCourse;
+import pupitre.apiclient.*;
 
 import javax.inject.Singleton;
 import java.util.List;
@@ -53,5 +50,14 @@ public class CourseService {
 
   public FeaturedCourse featuredCourse() {
     return client.featured();
+  }
+
+  public List<Event> events() {
+    return client.events().stream()
+      .peek(event -> {
+        //TODO: set this values
+        event.setUrl("#");
+      })
+      .collect(toList());
   }
 }
