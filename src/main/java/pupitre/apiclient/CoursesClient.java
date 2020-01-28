@@ -12,4 +12,7 @@ public interface CoursesClient {
 
   @Get("/v1/courses/popular")
   List<PopularCourse> popular();
+
+  @Get("/v1/courses/featured")
+  FeaturedCourse featured();
 }

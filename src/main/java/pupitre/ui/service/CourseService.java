@@ -2,6 +2,7 @@ package pupitre.ui.service;
 
 import pupitre.apiclient.AwesomeCourse;
 import pupitre.apiclient.CoursesClient;
+import pupitre.apiclient.FeaturedCourse;
 import pupitre.apiclient.PopularCourse;
 
 import javax.inject.Singleton;
@@ -48,5 +49,9 @@ public class CourseService {
         popularCourse.setRegisterUrl("#");
       })
       .collect(toList());
+  }
+
+  public FeaturedCourse featuredCourse() {
+    return client.featured();
   }
 }

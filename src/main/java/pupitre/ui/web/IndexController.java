@@ -25,7 +25,7 @@ public class IndexController {
     var dataToRender = Map.of(
       "sliderItems", courseService.awesome(),
       "courses", courseService.popular(),
-      "featuredCourse", featuredCourse(),
+      "featuredCourse", courseService.featuredCourse(),
       "events", events(),
       "instructors", instructors(),
       "tour", tour(),
@@ -137,9 +137,5 @@ public class IndexController {
     );
   }
 
-  private Map<String, String> featuredCourse() {
-    return Map.of(
-      "name", "Docker Containers y Orquestación con Kubernetes"
-    );
-  }
+
 }
