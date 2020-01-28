@@ -5,17 +5,26 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.views.ModelAndView;
 import lombok.extern.slf4j.Slf4j;
+import pupitre.apiclient.CoursesClient;
+import pupitre.ui.service.CourseService;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 @Slf4j
 @Controller("/")
 public class IndexController {
+
+  private final CourseService courseService;
+
+  public IndexController(CourseService courseService) {
+    this.courseService = courseService;
+  }
   @Get
   public ModelAndView index(HttpRequest<?> request) {
     var dataToRender = Map.of(
-      "sliderItems", sliderItems(),
+      "sliderItems", courseService.awesome(),
       "courses", popularCourses(),
       "featuredCourse", featuredCourse(),
       "events", events(),
@@ -132,44 +141,6 @@ public class IndexController {
   private Map<String, String> featuredCourse() {
     return Map.of(
       "name", "Docker Containers y Orquestación con Kubernetes"
-    );
-  }
-
-  private List<Map<String, String>> sliderItems() {
-    return List.of(
-      slider(
-        "rs-1706",
-        "/images/nivo-1.jpg",
-        "Desarrollo de Microservicios",
-        "Cloud Native",
-        "Aprende los principios de Cloud Native y como aplicarlos <br> " +
-          "para desarrollar microservicios en Java con Spring Boot.") /*,
-      slider(
-        "rs-1707",
-        "/images/nivo-2.jpg",
-        "Take the first step to",
-        "learn with us",
-        "Lorem ipsum dolor sit amet, consectetur elit, sed do <br> " +
-          "eiusmod tempor incididunt ut laboreet dolore magna aliqua."
-      ),
-      slider(
-        "rs-1708",
-        "/images/nivo-3.jpg",
-        "Are you ready to",
-        "apply?",
-        "Lorem ipsum dolor sit amet, consectetur elit, sed do <br> " +
-          "eiusmod tempor incididunt ut laboreet dolore magna aliqua."
-      )*/
-    );
-  }
-
-  private Map<String, String> slider(String index, String image, String text1, String text2, String caption) {
-    return Map.of(
-      "index", index,
-      "image", image,
-      "text1", text1,
-      "text2", text2,
-      "caption", caption
     );
   }
 

@@ -1,6 +1,7 @@
 micronaut:
   application:
     name: ui
+  server.port: 8081
 ---
 micronaut:
   router:
