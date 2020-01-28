@@ -55,9 +55,17 @@ public class CourseService {
   public List<Event> events() {
     return client.events().stream()
       .peek(event -> {
-        //TODO: set this values
+        //TODO: set this value
         event.setUrl("#");
       })
       .collect(toList());
+  }
+
+  public List<Instructor> instructors() {
+    return client.instructors().stream()
+      .peek(instructor -> {
+        //TODO: set this value
+        instructor.setProfileUrl("#");
+      }).collect(toList());
   }
 }

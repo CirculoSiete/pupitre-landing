@@ -27,7 +27,7 @@ public class IndexController {
       "courses", courseService.popular(),
       "featuredCourse", courseService.featuredCourse(),
       "events", courseService.events(),
-      "instructors", instructors(),
+      "instructors", courseService.instructors(),
       "tour", tour(),
       "testimonials", testimonials()
     );
@@ -72,27 +72,6 @@ public class IndexController {
       "desc1", desc1,
       "desc2", desc2,
       "videoUrl", videoUrl
-
-    );
-  }
-
-  private List instructors() {
-    return List.of(
-      instructor(
-        "/images/team/team-01.jpg",
-        "#",
-        "Domingo Suárez",
-        "Instructor"
-      )
-    );
-  }
-
-  private Map instructor(String logo, String profileUrl, String name, String title) {
-    return Map.of(
-      "logo", logo,
-      "profileUrl", profileUrl,
-      "name", name,
-      "title", title
     );
   }
 }

@@ -18,4 +18,7 @@ public interface CoursesClient {
 
   @Get("/v1/courses/events")
   List<Event> events();
+
+  @Get("/v1/courses/instructors")
+  List<Instructor> instructors();
 }
