@@ -9,4 +9,7 @@ import java.util.List;
 public interface CoursesClient {
   @Get("/v1/courses/awesome")
   List<AwesomeCourse> awesome();
+
+  @Get("/v1/courses/popular")
+  List<PopularCourse> popular();
 }

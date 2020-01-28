@@ -2,12 +2,14 @@ package pupitre.ui.service;
 
 import pupitre.apiclient.AwesomeCourse;
 import pupitre.apiclient.CoursesClient;
+import pupitre.apiclient.PopularCourse;
 
 import javax.inject.Singleton;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 @Singleton
 public class CourseService {
@@ -22,16 +24,29 @@ public class CourseService {
     AtomicInteger counter = new AtomicInteger(6);
     return awesome.stream()
       .map(awesomeCourse -> {
+        //TODO: split the text
         String text1 = awesomeCourse.getText();
         String text2 = "";
         String index = "rs-170" + counter.getAndIncrement();
+        //TODO: fix the length (use a <br>)
+        String caption = awesomeCourse.getCaption();
         return Map.of(
           "image", awesomeCourse.getImage(),
-          "caption", awesomeCourse.getCaption(),
+          "caption", caption,
           "text1", text1,
           "text2", text2,
           "index", index
         );
-      }).collect(Collectors.toList());
+      }).collect(toList());
+  }
+
+  public List<PopularCourse> popular() {
+    return client.popular().stream()
+      .peek(popularCourse -> {
+        //TODO: set this values
+        popularCourse.setDetailsUrl("#");
+        popularCourse.setRegisterUrl("#");
+      })
+      .collect(toList());
   }
 }

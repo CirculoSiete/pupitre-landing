@@ -24,7 +24,7 @@ public class IndexController {
   public ModelAndView index(HttpRequest<?> request) {
     var dataToRender = Map.of(
       "sliderItems", courseService.awesome(),
-      "courses", popularCourses(),
+      "courses", courseService.popular(),
       "featuredCourse", featuredCourse(),
       "events", events(),
       "instructors", instructors(),
@@ -140,51 +140,6 @@ public class IndexController {
   private Map<String, String> featuredCourse() {
     return Map.of(
       "name", "Docker Containers y Orquestación con Kubernetes"
-    );
-  }
-
-  private List<Map<String, String>> popularCourses() {
-    return List.of(
-      popularCourse(
-        "/images/courses/courses1-1.jpg",
-        "Mastering DevOps",
-        "En este curso aprenderás sobre todas las disciplinas y herramientas de la práctica de DevOps.",
-        "$8,000 + IVA",
-        "Virtual",
-        "#",
-        "#"
-      ),
-      popularCourse(
-        "/images/courses/courses1-2.jpg",
-        "Introducción a Micronaut",
-        "Conoce las bases fundamentales para desarrollar aplicaciones ligeras en Java",
-        "¡Gratis!",
-        "En línea-OnDemand",
-        "#",
-        "#"
-      ),
-      popularCourse(
-        "/images/courses/courses1-3.jpg",
-        "Jenkins efectivo",
-        "Aprende a usar Jenkins en una forma efectiva, para implementar Integración Continua con valor.",
-        "$ 11,000 + IVA",
-        "Presencial",
-        "#",
-        "#"
-      )
-    );
-  }
-
-  private Map<String, String> popularCourse(String banner, String shortName, String shortDescription, String price,
-                                            String type, String detailsUrl, String registerUrl) {
-    return Map.of(
-      "banner", banner,
-      "shortName", shortName,
-      "shortDescription", shortDescription,
-      "price", price,
-      "type", type,
-      "detailsUrl", detailsUrl,
-      "registerUrl", registerUrl
     );
   }
 }
