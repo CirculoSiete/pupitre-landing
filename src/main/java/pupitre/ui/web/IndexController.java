@@ -5,10 +5,8 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.views.ModelAndView;
 import lombok.extern.slf4j.Slf4j;
-import pupitre.apiclient.CoursesClient;
 import pupitre.ui.service.CourseService;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +19,7 @@ public class IndexController {
   public IndexController(CourseService courseService) {
     this.courseService = courseService;
   }
+
   @Get
   public ModelAndView index(HttpRequest<?> request) {
     var dataToRender = Map.of(
