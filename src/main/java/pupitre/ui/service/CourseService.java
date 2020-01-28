@@ -68,4 +68,8 @@ public class CourseService {
         instructor.setProfileUrl("#");
       }).collect(toList());
   }
+
+  public List<Testimonial> testimonials() {
+    return client.testimonials();
+  }
 }

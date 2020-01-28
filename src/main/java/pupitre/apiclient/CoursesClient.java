@@ -21,4 +21,7 @@ public interface CoursesClient {
 
   @Get("/v1/courses/instructors")
   List<Instructor> instructors();
+
+  @Get("/v1/courses/testimonials")
+  List<Testimonial> testimonials();
 }

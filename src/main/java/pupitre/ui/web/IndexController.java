@@ -7,7 +7,6 @@ import io.micronaut.views.ModelAndView;
 import lombok.extern.slf4j.Slf4j;
 import pupitre.ui.service.CourseService;
 
-import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -29,33 +28,10 @@ public class IndexController {
       "events", courseService.events(),
       "instructors", courseService.instructors(),
       "tour", tour(),
-      "testimonials", testimonials()
+      "testimonials", courseService.testimonials()
     );
 
     return new ModelAndView("index", dataToRender);
-  }
-
-  private List testimonials() {
-    return List.of(
-      testimonial(
-        "/images/team/team-01.jpg",
-        "Devid Martin",
-        "Guardian",
-        "I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was " +
-          "born and I will give you a complete account of the system, and expound the actual teachings of the " +
-          "great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, " +
-          "or avoids pleasure itself"
-      )
-    );
-  }
-
-  private Map testimonial(String image, String name, String company, String content) {
-    return Map.of(
-      "image", image,
-      "name", name,
-      "company", company,
-      "content", content
-    );
   }
 
   private Map tour() {
