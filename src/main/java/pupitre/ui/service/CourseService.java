@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
 
 @Singleton
@@ -51,10 +52,14 @@ public class CourseService {
 
   public List<FeaturedCourse> featuredCourse() {
     var featured = client.featured();
-    var rand = new Random();
-    var featuredCourse = featured.get(rand.nextInt(featured.size()));
 
-    return List.of(featuredCourse);
+    if (featured.size() > 0) {
+      var rand = new Random();
+      var featuredCourse = featured.get(rand.nextInt(featured.size()));
+      return List.of(featuredCourse);
+    }
+
+    return emptyList();
   }
 
   public List<Event> events() {
