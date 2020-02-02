@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import pupitre.ui.service.CourseService;
 
 import java.util.Map;
+import java.util.Optional;
 
 @Slf4j
 @Controller("/")
@@ -30,6 +31,8 @@ public class IndexController {
       "tour", tour(),
       "testimonials", courseService.testimonials()
     );
+
+
 
     return new ModelAndView("index", dataToRender);
   }

@@ -5,6 +5,7 @@ import pupitre.apiclient.*;
 import javax.inject.Singleton;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.util.stream.Collectors.toList;
@@ -48,8 +49,12 @@ public class CourseService {
       .collect(toList());
   }
 
-  public FeaturedCourse featuredCourse() {
-    return client.featured();
+  public List<FeaturedCourse> featuredCourse() {
+    var featured = client.featured();
+    var rand = new Random();
+    var featuredCourse = featured.get(rand.nextInt(featured.size()));
+
+    return List.of(featuredCourse);
   }
 
   public List<Event> events() {
