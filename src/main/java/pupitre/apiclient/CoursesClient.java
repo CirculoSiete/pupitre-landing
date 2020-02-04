@@ -24,6 +24,6 @@ public interface CoursesClient extends PupitreOperations {
   @Get("/v1/courses/instructors")
   List<Instructor> instructors();
 
-  @Get("/v1/courses/testimonials")
-  List<Testimonial> testimonials();
+  @Get("/v1/reviews")
+  List<Review> testimonials();
 }

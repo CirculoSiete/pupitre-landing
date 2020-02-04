@@ -79,7 +79,7 @@ public class CourseService {
       }).collect(toList());
   }
 
-  public List<Testimonial> testimonials() {
+  public List<Review> testimonials() {
     return client.testimonials();
   }
 }

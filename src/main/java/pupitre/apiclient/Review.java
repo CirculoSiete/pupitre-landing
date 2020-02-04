@@ -7,9 +7,13 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class Testimonial {
+public class Review {
+  private String id;
   private String company;
   private String content;
   private String image;
   private String name;
+  private String shortReview;
+  private String courseName;
+  private Integer rating;
 }

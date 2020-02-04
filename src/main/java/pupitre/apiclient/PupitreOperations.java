@@ -13,5 +13,5 @@ public interface PupitreOperations {
 
   List<Instructor> instructors();
 
-  List<Testimonial> testimonials();
+  List<Review> testimonials();
 }
