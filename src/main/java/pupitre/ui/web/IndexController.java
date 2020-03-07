@@ -4,12 +4,13 @@ import io.micronaut.http.HttpRequest;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.views.ModelAndView;
-import io.reactivex.Flowable;
 import io.reactivex.schedulers.Schedulers;
 import lombok.extern.slf4j.Slf4j;
 import pupitre.ui.service.CourseService;
 
 import java.util.Map;
+
+import static io.reactivex.Flowable.zip;
 
 @Slf4j
 @Controller("/")
@@ -24,20 +25,21 @@ public class IndexController {
   @Get
   public ModelAndView index(HttpRequest<?> request) {
     log.info("Loading index page");
-    var awesome3 = courseService.awesome();
 
-    var mapFlowable = Flowable.zip(awesome3, awesome3, (awesomeCourses, awesomeCourses2) ->
-      Map.of(
-        //"sliderItems", courseService.awesome(),
-        "sliderItems", courseService.awesome(awesomeCourses),
+    var mapFlowable = zip(
+      courseService.awesome(),
+      courseService.popular(),
+      (awesomeCourses, popularCourses) ->
+        Map.of(
+          "sliderItems", courseService.awesome(awesomeCourses),
+          "courses", courseService.popular(popularCourses),
 
-        "courses", courseService.popular(),
-        "featuredCourse", courseService.featuredCourse(),
-        "events", courseService.events(),
-        "instructors", courseService.instructors(),
-        "tour", tour(),
-        "testimonials", courseService.testimonials()
-      )).observeOn(Schedulers.io());
+          "featuredCourse", courseService.featuredCourse(),
+          "events", courseService.events(),
+          "instructors", courseService.instructors(),
+          "tour", tour(),
+          "testimonials", courseService.testimonials()
+        )).observeOn(Schedulers.io());
     var dataToRender = mapFlowable.blockingFirst();
 
     return new ModelAndView("index", dataToRender);

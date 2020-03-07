@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import javax.inject.Singleton;
 import java.util.List;
 
+import static io.reactivex.Flowable.just;
 import static java.util.Collections.emptyList;
 
 @Slf4j
@@ -16,13 +17,14 @@ import static java.util.Collections.emptyList;
 public class CoursesClientFallback implements PupitreOperations {
   @Override
   public Flowable<List<AwesomeCourse>> awesome() {
-    return Flowable.just(emptyList());
+    log.info("awesome courses");
+    return just(emptyList());
   }
 
   @Override
-  public List<PopularCourse> popular() {
-    log.warn("popular courses");
-    return emptyList();
+  public Flowable<List<PopularCourse>> popular() {
+    log.info("popular courses");
+    return just(emptyList());
   }
 
   @Override

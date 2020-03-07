@@ -48,8 +48,14 @@ public class CourseService {
       }).collect(toList());
   }
 
-  public List<PopularCourse> popular() {
-    return client.popular().stream()
+  public Flowable<List<PopularCourse>> popular() {
+    log.info("Retrieving popular Courses from Pupitre");
+    return client.popular();
+  }
+
+  public List<PopularCourse> popular(List<PopularCourse> popular) {
+    log.info("Mapping Popular courses from Pupitre model to UI");
+    return popular.stream()
       .peek(popularCourse -> {
         //TODO: set this values
         popularCourse.setDetailsUrl("#");

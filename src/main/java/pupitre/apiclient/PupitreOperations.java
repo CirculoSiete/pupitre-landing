@@ -7,7 +7,7 @@ import java.util.List;
 public interface PupitreOperations {
   Flowable<List<AwesomeCourse>> awesome();
 
-  List<PopularCourse> popular();
+  Flowable<List<PopularCourse>> popular();
 
   List<FeaturedCourse> featured();
 

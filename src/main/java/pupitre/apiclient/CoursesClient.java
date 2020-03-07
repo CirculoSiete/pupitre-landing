@@ -14,7 +14,7 @@ public interface CoursesClient extends PupitreOperations {
   Flowable<List<AwesomeCourse>> awesome();
 
   @Get("/v1/courses/popular")
-  List<PopularCourse> popular();
+  Flowable<List<PopularCourse>> popular();
 
   @Get("/v1/courses/featured")
   List<FeaturedCourse> featured();
