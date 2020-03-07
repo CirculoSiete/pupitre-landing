@@ -4,13 +4,14 @@ import io.micronaut.http.HttpRequest;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.views.ModelAndView;
-import io.reactivex.schedulers.Schedulers;
 import lombok.extern.slf4j.Slf4j;
 import pupitre.ui.service.CourseService;
 
 import java.util.Map;
 
 import static io.reactivex.Flowable.zip;
+import static io.reactivex.schedulers.Schedulers.computation;
+import static io.reactivex.schedulers.Schedulers.io;
 
 @Slf4j
 @Controller("/")
@@ -29,18 +30,23 @@ public class IndexController {
     var mapFlowable = zip(
       courseService.awesome(),
       courseService.popular(),
-      (awesomeCourses, popularCourses) ->
+      courseService.featuredCourse(),
+      (awesomeCourses, popularCourses, featuredCourses) ->
         Map.of(
           "sliderItems", courseService.awesome(awesomeCourses),
           "courses", courseService.popular(popularCourses),
+          "featuredCourse", courseService.featuredCourse(featuredCourses),
 
-          "featuredCourse", courseService.featuredCourse(),
           "events", courseService.events(),
           "instructors", courseService.instructors(),
           "tour", tour(),
           "testimonials", courseService.testimonials()
-        )).observeOn(Schedulers.io());
-    var dataToRender = mapFlowable.blockingFirst();
+        ))
+      .observeOn(io())
+      .subscribeOn(computation());
+
+    var dataToRender = mapFlowable
+      .blockingFirst();
 
     return new ModelAndView("index", dataToRender);
   }

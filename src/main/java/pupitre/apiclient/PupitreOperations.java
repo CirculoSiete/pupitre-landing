@@ -9,7 +9,7 @@ public interface PupitreOperations {
 
   Flowable<List<PopularCourse>> popular();
 
-  List<FeaturedCourse> featured();
+  Flowable<List<FeaturedCourse>> featured();
 
   List<Event> events();
 

@@ -28,9 +28,9 @@ public class CoursesClientFallback implements PupitreOperations {
   }
 
   @Override
-  public List<FeaturedCourse> featured() {
+  public Flowable<List<FeaturedCourse>> featured() {
     log.warn("Featured courses");
-    return emptyList();
+    return just(emptyList());
   }
 
   @Override

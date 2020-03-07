@@ -64,12 +64,16 @@ public class CourseService {
       .collect(toList());
   }
 
-  public List<FeaturedCourse> featuredCourse() {
-    var featured = client.featured();
+  public Flowable<List<FeaturedCourse>> featuredCourse() {
+    log.info("Retrieving featured Courses from Pupitre");
+    return client.featured();
+  }
 
-    if (featured.size() > 0) {
+  public List<FeaturedCourse> featuredCourse(List<FeaturedCourse> featuredCourses) {
+    log.info("Mapping featured courses from Pupitre model to UI");
+    if (featuredCourses.size() > 0) {
       var rand = new Random();
-      var featuredCourse = featured.get(rand.nextInt(featured.size()));
+      var featuredCourse = featuredCourses.get(rand.nextInt(featuredCourses.size()));
       return List.of(featuredCourse);
     }
 
