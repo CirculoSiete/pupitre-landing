@@ -11,7 +11,7 @@ public interface PupitreOperations {
 
   Flowable<List<FeaturedCourse>> featured();
 
-  List<Event> events();
+  Flowable<List<Event>> events();
 
   List<Instructor> instructors();
 

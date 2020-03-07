@@ -34,9 +34,9 @@ public class CoursesClientFallback implements PupitreOperations {
   }
 
   @Override
-  public List<Event> events() {
+  public Flowable<List<Event>> events() {
     log.warn("Events");
-    return emptyList();
+    return just(emptyList());
   }
 
   @Override

@@ -80,8 +80,13 @@ public class CourseService {
     return emptyList();
   }
 
-  public List<Event> events() {
-    return client.events().stream()
+  public Flowable<List<Event>> events() {
+    log.info("Retrieving events from Pupitre");
+    return client.events();
+  }
+  public List<Event> events(List<Event> events) {
+    log.info("Mapping events from Pupitre model to UI");
+    return events.stream()
       .peek(event -> {
         //TODO: set this value
         event.setUrl("#");
