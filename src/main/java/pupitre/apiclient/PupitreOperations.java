@@ -15,5 +15,5 @@ public interface PupitreOperations {
 
   Flowable<List<Instructor>> instructors();
 
-  List<Review> testimonials();
+  Flowable<List<Review>> testimonials();
 }

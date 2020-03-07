@@ -26,5 +26,5 @@ public interface CoursesClient extends PupitreOperations {
   Flowable<List<Instructor>> instructors();
 
   @Get("/v1/reviews")
-  List<Review> testimonials();
+  Flowable<List<Review>> testimonials();
 }

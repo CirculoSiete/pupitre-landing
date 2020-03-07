@@ -27,27 +27,25 @@ public class IndexController {
   public ModelAndView index(HttpRequest<?> request) {
     log.info("Loading index page");
 
-    var mapFlowable = zip(
+    var dataToRender = zip(
       courseService.awesome(),
       courseService.popular(),
       courseService.featuredCourse(),
       courseService.events(),
       courseService.instructors(),
-      (awesome, popular, featured, events, instructors) ->
+      courseService.testimonials(),
+      (awesome, popular, featured, events, instructors, testimonials) ->
         Map.of(
           "sliderItems", courseService.awesome(awesome),
           "courses", courseService.popular(popular),
           "featuredCourse", courseService.featuredCourse(featured),
           "events", courseService.events(events),
           "instructors", courseService.instructors(instructors),
-
           "tour", tour(),
-          "testimonials", courseService.testimonials()
+          "testimonials", testimonials
         ))
       .observeOn(io())
-      .subscribeOn(computation());
-
-    var dataToRender = mapFlowable
+      .subscribeOn(computation())
       .blockingFirst();
 
     return new ModelAndView("index", dataToRender);

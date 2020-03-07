@@ -46,8 +46,8 @@ public class CoursesClientFallback implements PupitreOperations {
   }
 
   @Override
-  public List<Review> testimonials() {
+  public Flowable<List<Review>> testimonials() {
     log.info("Reviews");
-    return emptyList();
+    return just(emptyList());
   }
 }

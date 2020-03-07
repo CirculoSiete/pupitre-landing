@@ -109,7 +109,8 @@ public class CourseService {
       }).collect(toList());
   }
 
-  public List<Review> testimonials() {
+  public Flowable<List<Review>> testimonials() {
+    log.info("Retrieving testimonials from Pupitre");
     return client.testimonials();
   }
 }
