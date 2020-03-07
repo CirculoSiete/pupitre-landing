@@ -2,6 +2,7 @@ package pupitre.apiclient;
 
 import io.micronaut.discovery.exceptions.DiscoveryException;
 import io.micronaut.retry.annotation.Fallback;
+import io.reactivex.Flowable;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.inject.Singleton;
@@ -14,8 +15,8 @@ import static java.util.Collections.emptyList;
 @Fallback(includes = {DiscoveryException.class})
 public class CoursesClientFallback implements PupitreOperations {
   @Override
-  public List<AwesomeCourse> awesome() {
-    return emptyList();
+  public Flowable<List<AwesomeCourse>> awesome() {
+    return Flowable.just(emptyList());
   }
 
   @Override

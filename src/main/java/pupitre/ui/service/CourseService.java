@@ -1,5 +1,7 @@
 package pupitre.ui.service;
 
+import io.reactivex.Flowable;
+import lombok.extern.slf4j.Slf4j;
 import pupitre.apiclient.*;
 
 import javax.inject.Singleton;
@@ -11,6 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
 
+@Slf4j
 @Singleton
 public class CourseService {
   private final CoursesClient client;
@@ -19,9 +22,14 @@ public class CourseService {
     this.client = client;
   }
 
-  public List<Map<String, String>> awesome() {
-    List<AwesomeCourse> awesome = client.awesome();
-    AtomicInteger counter = new AtomicInteger(6);
+  public Flowable<List<AwesomeCourse>> awesome() {
+    log.info("Retrieving Awesome Courses from Pupitre");
+    return client.awesome();
+  }
+
+  public List<Map<String, String>> awesome(List<AwesomeCourse> awesome) {
+    log.info("Mapping Awesome courses from Pupitre model to UI");
+    var counter = new AtomicInteger(6);
     return awesome.stream()
       .map(awesomeCourse -> {
         //TODO: split the text
@@ -29,7 +37,7 @@ public class CourseService {
         String text2 = "";
         String index = "rs-170" + counter.getAndIncrement();
         //TODO: fix the length (use a <br>)
-        String caption = awesomeCourse.getCaption();
+        var caption = awesomeCourse.getCaption();
         return Map.of(
           "image", awesomeCourse.getImage(),
           "caption", caption,

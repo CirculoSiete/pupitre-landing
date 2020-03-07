@@ -3,6 +3,7 @@ package pupitre.apiclient;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.client.annotation.Client;
 import io.micronaut.retry.annotation.CircuitBreaker;
+import io.reactivex.Flowable;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
 @Client("pupitre")
 public interface CoursesClient extends PupitreOperations {
   @Get("/v1/courses/highlighted")
-  List<AwesomeCourse> awesome();
+  Flowable<List<AwesomeCourse>> awesome();
 
   @Get("/v1/courses/popular")
   List<PopularCourse> popular();
