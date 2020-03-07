@@ -32,14 +32,15 @@ public class IndexController {
       courseService.popular(),
       courseService.featuredCourse(),
       courseService.events(),
-      (awesome, popular, featured, events) ->
+      courseService.instructors(),
+      (awesome, popular, featured, events, instructors) ->
         Map.of(
           "sliderItems", courseService.awesome(awesome),
           "courses", courseService.popular(popular),
           "featuredCourse", courseService.featuredCourse(featured),
           "events", courseService.events(events),
+          "instructors", courseService.instructors(instructors),
 
-          "instructors", courseService.instructors(),
           "tour", tour(),
           "testimonials", courseService.testimonials()
         ))

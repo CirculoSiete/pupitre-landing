@@ -84,6 +84,7 @@ public class CourseService {
     log.info("Retrieving events from Pupitre");
     return client.events();
   }
+
   public List<Event> events(List<Event> events) {
     log.info("Mapping events from Pupitre model to UI");
     return events.stream()
@@ -94,8 +95,14 @@ public class CourseService {
       .collect(toList());
   }
 
-  public List<Instructor> instructors() {
-    return client.instructors().stream()
+  public Flowable<List<Instructor>> instructors() {
+    log.info("Retrieving instructors from Pupitre");
+    return client.instructors();
+  }
+
+  public List<Instructor> instructors(List<Instructor> instructors) {
+    log.info("Mapping instructors from Pupitre model to UI");
+    return instructors.stream()
       .peek(instructor -> {
         //TODO: set this value
         instructor.setProfileUrl("#");

@@ -23,7 +23,7 @@ public interface CoursesClient extends PupitreOperations {
   Flowable<List<Event>> events();
 
   @Get("/v1/courses/instructors")
-  List<Instructor> instructors();
+  Flowable<List<Instructor>> instructors();
 
   @Get("/v1/reviews")
   List<Review> testimonials();

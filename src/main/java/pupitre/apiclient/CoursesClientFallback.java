@@ -40,9 +40,9 @@ public class CoursesClientFallback implements PupitreOperations {
   }
 
   @Override
-  public List<Instructor> instructors() {
+  public Flowable<List<Instructor>> instructors() {
     log.info("Instructors");
-    return emptyList();
+    return just(emptyList());
   }
 
   @Override

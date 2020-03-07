@@ -13,7 +13,7 @@ public interface PupitreOperations {
 
   Flowable<List<Event>> events();
 
-  List<Instructor> instructors();
+  Flowable<List<Instructor>> instructors();
 
   List<Review> testimonials();
 }
