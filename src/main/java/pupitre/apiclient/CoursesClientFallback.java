@@ -17,13 +17,13 @@ import static java.util.Collections.emptyList;
 public class CoursesClientFallback implements PupitreOperations {
   @Override
   public Flowable<List<AwesomeCourse>> awesome() {
-    log.info("awesome courses");
+    log.warn("awesome courses");
     return just(emptyList());
   }
 
   @Override
   public Flowable<List<PopularCourse>> popular() {
-    log.info("popular courses");
+    log.warn("popular courses");
     return just(emptyList());
   }
 
@@ -41,13 +41,13 @@ public class CoursesClientFallback implements PupitreOperations {
 
   @Override
   public Flowable<List<Instructor>> instructors() {
-    log.info("Instructors");
+    log.warn("Instructors");
     return just(emptyList());
   }
 
   @Override
   public Flowable<List<Review>> testimonials() {
-    log.info("Reviews");
+    log.warn("Reviews");
     return just(emptyList());
   }
 }
