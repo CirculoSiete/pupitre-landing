@@ -65,14 +65,32 @@ dependencies {
 test.classpath += configurations.developmentOnly
 
 mainClassName = "pupitre.Application"
+
+compileJava {
+  options.compilerArgs += ["--enable-preview"]
+}
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_14
+  targetCompatibility = JavaVersion.VERSION_14
+}
+
 // use JUnit 5 platform
 test {
   useJUnitPlatform()
+  jvmArgs(['--enable-preview'])
 }
 tasks.withType(JavaCompile) {
   options.encoding = "UTF-8"
   options.compilerArgs.add('-parameters')
   //options.compilerArgs.add('-Xlint:unchecked')
+}
+tasks.withType(JavaCompile).each {
+  it.options.compilerArgs.add('--enable-preview')
+}
+
+application {
+  applicationDefaultJvmArgs = ['--enable-preview']
 }
 
 shadowJar {
@@ -80,4 +98,4 @@ shadowJar {
 }
 
 run.classpath += configurations.developmentOnly
-run.jvmArgs('-noverify', '-XX:TieredStopAtLevel=1', '-Dcom.sun.management.jmxremote')
+run.jvmArgs('-noverify', '-XX:TieredStopAtLevel=1', '-Dcom.sun.management.jmxremote', '--enable-preview')
