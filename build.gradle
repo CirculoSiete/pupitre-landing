@@ -35,6 +35,8 @@ dependencies {
   runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
 
   runtime "io.micronaut:micronaut-discovery-client"
+  implementation "io.micronaut:micronaut-tracing"
+  implementation "io.jaegertracing:jaeger-thrift"
 
 
   testAnnotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
